@@ -55,4 +55,8 @@ var yearList = ee.List.sequence(1980, 2020, 5);
 print(yearList);
 // We can create a ee.List of numbers representing years from 1980 to 2020, counting by 5, by calling this function with the following values: start = 1980, end = 2020, and step = 5.
 
+// Earth engine data structures
+
+
+
 
