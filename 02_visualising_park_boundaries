@@ -32,3 +32,5 @@ var iucn_pa = wdpa.filter(ee.Filter.eq('IUCN_CAT', 'II'));
 Map.addLayer(iucn_pa, {color: 'yellow'}, 'National Parks');
 print ('No of level 2 protected areas', iucn_pa.size())
 
+// Spatial fitler
+Map.addLayer(countries)
