@@ -1,2 +1,16 @@
 // Comments can be recorded using two slashe
 print('Hello World')
+
+// Variables are used to store objects, and are defined using the keyword var.
+var the_answer = 42; //number
+
+var city = 'San Francisco'; // creates a variable called city
+print (city); // print value of city variable
+
+var population = 873965;
+print (population);
+print('The value for the population variable is:', population);
+
+// Useful to make lists
+var cities = ['San Francisco', 'Los Angeles', 'New York', 'Atlanta'];
+print (cities);
