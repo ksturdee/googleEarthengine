@@ -1,2 +1,4 @@
-// Visualising
+// Visualising // Setup
+
 Map.setOptions('SATELLITE')
+Map.setCenter(174.0638, -39.2891, 9)
