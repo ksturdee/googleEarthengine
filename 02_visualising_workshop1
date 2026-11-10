@@ -16,3 +16,5 @@ Map.addLayer(srtm, {
 // Visualize FEATURES
 var wdpa = (ee.FeatureCollection("WCMC/WDPA/current/polygons"))
 Map.addLayer(wdpa, {color: 'red'}, 'wdpa') // include layer names to stay organised
+
+// Using inspector, we can see it is called "Egmont National Park" managed by the Department of Conservation
