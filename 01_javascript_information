@@ -16,3 +16,23 @@ var cities = ['San Francisco', 'Los Angeles', 'New York', 'Atlanta'];
 print (cities);
 
 // Objects allow you to store key-value pairs. Create a directory using curly braces
+var cityData = {
+    'city': 'San Francisco',
+    'coordinates': [-122.4194, 37.7749],
+    'population': 873965
+};
+print(cityData);
+
+// Functions can be defined as a way to reuse code and make it easier to read
+var my_hello_function = function(string) {
+  return 'Hello ' + string + '!';
+};
+print(my_hello_function('world'));
+
+// Another example:
+var greet = function(name) {
+    return 'Hello ' + name;
+};
+print(greet('World'));
+print(greet('Readers'));
+print(greet('Everyone'));
