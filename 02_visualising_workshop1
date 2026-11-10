@@ -17,4 +17,9 @@ Map.addLayer(srtm, {
 var wdpa = (ee.FeatureCollection("WCMC/WDPA/current/polygons"))
 Map.addLayer(wdpa, {color: 'red'}, 'wdpa') // include layer names to stay organised
 
+Map.addLayer(protected_areas, {color: 'red'})
 // Using inspector, we can see it is called "Egmont National Park" managed by the Department of Conservation. It is a terrestrial realm with the IUCN category of 11.
+
+var no_pas = protected_areas.size()
+
+print('No of protected areas:', protected_areas.size())
