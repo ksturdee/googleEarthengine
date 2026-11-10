@@ -10,9 +10,9 @@ Map.addLayer(srtm, {
   palette: ['2c5e3b', 'a9ba7d', 'dec68a', '8c684d', 'b0a9a4', 'ffffff'], 
   min: 0, 
   max: 3000
-}); // Adds earth-toned topography layer from forest green (0m) to snow white (3000m)
+}, 'srtm'); // Adds earth-toned topography layer from forest green (0m) to snow white (3000m)
 // Using Inspector tab we can click on pixels to get values.
 
 // Visualize FEATURES
 var wdpa = (ee.FeatureCollection("WCMC/WDPA/current/polygons"))
-Map.addLayer(wdpa, {color: 'red'}, 'wdpa')
+Map.addLayer(wdpa, {color: 'red'}, 'wdpa') // include layer names to stay organised
