@@ -1,7 +1,7 @@
 // Visualising // Setup
 
 Map.setOptions('SATELLITE')
-Map.setCenter(174.0638, -39.2891, 9)
+Map.setCenter(174.0638, -39.2891, 11)
 
 // Viz an image
 var srtm = ee.Image("CGIAR/SRTM90_V4") // obtain snippet from search bar
@@ -15,4 +15,4 @@ Map.addLayer(srtm, {
 
 // Visualize FEATURES
 var wdpa = (ee.FeatureCollection("WCMC/WDPA/current/polygons"))
-Map.addLayer(wdpa)
+Map.addLayer(wdpa, {color: 'red'}, 'wdpa')
