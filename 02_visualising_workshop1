@@ -4,4 +4,11 @@ Map.setOptions('SATELLITE')
 Map.setCenter(174.0638, -39.2891, 12)
 
 // Viz an image
-ee.Image("CGIAR/SRTM90_V4")
+var srtm = ee.Image("CGIAR/SRTM90_V4") // obtain snippet from search bar
+print(srtm)
+Map.addLayer(srtm, {
+  palette: ['2c5e3b', 'a9ba7d', 'dec68a', '8c684d', 'b0a9a4', 'ffffff'], 
+  min: 0, 
+  max: 3000
+}); // Adds earth-toned topography layer from forest green (0m) to snow white (3000m)
+// Using Inspector tab we can click on pixels to get values.
