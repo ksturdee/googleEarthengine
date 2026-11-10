@@ -17,9 +17,18 @@ Map.addLayer(srtm, {
 var wdpa = (ee.FeatureCollection("WCMC/WDPA/current/polygons"))
 Map.addLayer(wdpa, {color: 'red'}, 'wdpa') // include layer names to stay organised
 
-Map.addLayer(protected_areas, {color: 'red'})
 // Using inspector, we can see it is called "Egmont National Park" managed by the Department of Conservation. It is a terrestrial realm with the IUCN category of 11.
 
-var no_pas = protected_areas.size()
+// Finding number of protected areas on Earth
+var no_pas = wdpa.size()
 
-print('No of protected areas:', protected_areas.size())
+print('No of protected areas:', wdpa.size())
+// Finding the first protected area
+var first_pa = wdpa.sort('STATUS_YR', false).first()
+print ('First protected area:', first_pa)
+
+// Filter only for level 2 protected areas
+var iucn_pa = wdpa.filter(ee.Filter.eq('IUCN_CAT', 'II'));
+Map.addLayer(iucn_pa, {color: 'yellow'}, 'National Parks');
+print ('No of level 2 protected areas', iucn_pa.size())
+
