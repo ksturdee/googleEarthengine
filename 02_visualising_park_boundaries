@@ -33,4 +33,9 @@ Map.addLayer(iucn_pa, {color: 'yellow'}, 'National Parks');
 print ('No of level 2 protected areas', iucn_pa.size())
 
 // Spatial fitler
-Map.addLayer(countries)
+var countries = ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017")
+print ('countries', countries)
+Map.addLayer(countries, {color: 'black'}, 'countries')
+
+var nz = countries.filter(ee.Filter.eq('country_co', 'NZ')) // filter country by code to get NZ
+Map.addLayer(nz, {color: 'white'}, 'nz')
