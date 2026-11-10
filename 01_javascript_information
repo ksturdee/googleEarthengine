@@ -11,6 +11,8 @@ var population = 873965;
 print (population);
 print('The value for the population variable is:', population);
 
-// Useful to make lists
+// Useful to make lists, stores multiple values in a single container  variable
 var cities = ['San Francisco', 'Los Angeles', 'New York', 'Atlanta'];
 print (cities);
+
+// Objects allow you to store key-value pairs. Create a directory using curly braces
