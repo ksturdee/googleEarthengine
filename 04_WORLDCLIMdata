@@ -22,4 +22,5 @@ var meanTemperatureVis = {
 
 Map.addLayer(jan_climate_avg, meanTemperatureVis, 'janClimate')
 Map.addLayer(july_climate_avg, meanTemperatureVis, 'julyClimate')
+// We now have degrees C per pixel
 
