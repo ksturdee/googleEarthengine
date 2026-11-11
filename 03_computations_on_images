@@ -49,14 +49,16 @@ print('slopeOutput', slopeOutput) // Slope: 10.041806454483673 m
 
 // Sanity check by clipping to see if you get the same answer
 var taranakiSlope = slope.clip(taranaki)
-Map.addLayer (taranakiSlope, {palette: ['white', 'darkred', 'black'], min:0, max:45}, 'taranaki slope')
+Map.addLayer(taranakiSlope, {palette: ['white', 'darkred', 'black'], min:0, max:45}, 'taranaki slope')
 
 var slopeOutput2 = taranakiSlope.reduceRegion({
   reducer: ee.Reducer.mean(), // we compute the mean of all slope pixel values in the national park
   geometry: taranaki,
   scale:90 // pixel size in metres - get this from the metadata (ie. search for it)
 })
-print ('slopeOutput2', slopeOutput2) // same answer
+print ('slopeOutput2', slopeOutput2) // same answer: 10.041806454483673
+
+// Clculate the maximum and minimum elevation of the park.
 
 
 
