@@ -33,3 +33,10 @@ Map.addLayer(snow_line, {palette: ['black','white']}, 'snow threshold')
 var slope = ee.Terrain.slope(srtm) // This shows us degrees of slope, can pick out hillsides, can distinguish between drop-offs versus gradual change
 Map.addLayer(slope, {palette: ['111e38', '24416b', '3f6c91', '689bb5', 'a5ccd1', 'e2f1ec']}, 'slope')
 
+
+
+
+
+
+
+
