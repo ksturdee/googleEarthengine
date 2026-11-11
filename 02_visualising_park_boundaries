@@ -39,3 +39,8 @@ Map.addLayer(countries, {color: 'black'}, 'countries')
 
 var nz = countries.filter(ee.Filter.eq('country_co', 'NZ')) // filter country by code to get NZ
 Map.addLayer(nz, {color: 'white'}, 'nz')
+
+// Filter PAs to NZBoundary
+var nz_pas = wdpa.filter(ee.Filter.bounds (nz))
+print('No. pas in NZ', nz_pas.size())
+Map.addLayer(nz_pas, {color: 'brown'}, 'NZ PAs') // 10130 protected parks in NZ
