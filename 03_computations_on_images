@@ -35,7 +35,8 @@ Map.addLayer(slope, {palette: ['111e38', '24416b', '3f6c91', '689bb5', 'a5ccd1',
 
 // Region reducers
 // Interested in the average slope of the national park
-v
+var taranaki = protected_areas.filter(ee.Filter.eq('NAME', 'Egmont National Park'));
+Map.addLayer(taranaki, {color: 'orange'}, 'Mt Taranaki')
 
 
 
