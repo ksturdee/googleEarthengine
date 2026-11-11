@@ -64,8 +64,23 @@ var elevOutput_Max = srtm.reduceRegion({
   geometry: taranaki,
   scale: 90 // again, pixel size in m from metadata
 })
-  print('elevOutput_Max', elevOutput_Max)
-
+  print('elevOutput_Max', elevOutput_Max) // Max elevation: 2484
+  
+// Repeat for minimum
+var elevOutput_Min = srtm.reduceRegion({
+  reducer: ee.Reducer.min(), // find min of all pixels within the national park 
+  geometry: taranaki,
+  scale: 90 // again, pixel size in m from metadata
+})
+  print('elevOutput_Min', elevOutput_Min) // Minimum elevation: 108
+  
+// Use reduce regions with a different reducer, SAME OUTPUT but more efficient route
+var elevOutput_MinMax = srtm.reduceRegion({
+  reducer: ee.Reducer.minMax(), // we compute the mean of all slope pixel values in the national park
+  geometry: taranaki,
+  scale:90 // pixel size in metres - get this from the metadata (ie. search for it)
+})
+print ('elevOutput_MinMax', elevOutput_MinMax)
 
 
 
