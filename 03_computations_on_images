@@ -1,5 +1,6 @@
 // Visualising 
 Map.setOptions('SATELLITE')
+Map.setCenter(174.0638, -39.2891, 11)
 
 // Import data
 // Note for this dataset the resolution is around 90 m 
@@ -12,16 +13,18 @@ Map.addLayer(srtm, {
 
 // Imagining an error where dataset is recorded 10 m off. Let's fix it
 
-var srtm_fixed = srtm.add(10) // adds 10 m to every pixel
-Map.addLayer(srtm_fixed, {
-  palette: ['2c5e3b', 'a9ba7d', 'dec68a', '8c684d', 'b0a9a4', 'ffffff'], 
-  min: 0, 
-  max: 2500}, 'srtm_fixed'); // loads the corrected map
+// var srtm_fixed = srtm.add(10) // adds 10 m to every pixel
+// Map.addLayer(srtm_fixed, {
+//   palette: ['2c5e3b', 'a9ba7d', 'dec68a', '8c684d', 'b0a9a4', 'ffffff'], 
+//   min: 0, 
+//   max: 2500}, 'srtm_fixed'); // loads the corrected map
   
 // Thresholding images
 // Pick a threshold for the snowline 
 
-var snow_line = srtm.gt(1800) // sets the threshold for greater than 1800 m
+var snow_line = srtm.gt(1800).selfMask() // sets the threshold for greater than 1800 m
+var tree_line = srtm.gt(1015).selfMask(); // likewise a threshold for 1015
+Map.addLayer(tree_line, {palette: ['black','#5D722C']}, 'tree threshold')
 Map.addLayer(snow_line, {palette: ['black','white']}, 'snow threshold')
 
 
