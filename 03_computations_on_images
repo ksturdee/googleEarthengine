@@ -35,8 +35,29 @@ Map.addLayer(slope, {palette: ['111e38', '24416b', '3f6c91', '689bb5', 'a5ccd1',
 
 // Region reducers
 // Interested in the average slope of the national park
+var protected_areas = (ee.FeatureCollection("WCMC/WDPA/current/polygons")) // Load boundaries
 var taranaki = protected_areas.filter(ee.Filter.eq('NAME', 'Egmont National Park'));
-Map.addLayer(taranaki, {color: 'orange'}, 'Mt Taranaki')
+Map.addLayer(taranaki, {color: 'orange'}, 'Mt Taranaki') // Adds Mt Taranaki protected area map
+
+// Apply a spatial reducer to estimate mean slope
+var slopeOutput = slope.reduceRegion ({
+  reducer: ee.Reducer.mean(), // finds mean of all slope pixel values in the park
+  geometry: taranaki,
+  scale:90 // pixel size in m from dataset metadata
+})
+print('slopeOutput', slopeOutput) // Slope: 10.041806454483673 m
+
+// Sanity check by clipping to see if you get the same answer
+var taranakiSlope = slope.clip(taranaki)
+Map.addLayer (taranakiSlope, {palette: ['white', 'darkred', 'black'], min:0, max:45}, 'taranaki slope')
+
+var slopeOutput2 = taranakiSlope.reduceRegion({
+  reducer: ee.Reducer.mean(), // we compute the mean of all slope pixel values in the national park
+  geometry: taranaki,
+  scale:90 // pixel size in metres - get this from the metadata (ie. search for it)
+})
+print ('slopeOutput2', slopeOutput2) // same answer
+
 
 
 
