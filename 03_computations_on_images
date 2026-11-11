@@ -17,3 +17,11 @@ Map.addLayer(srtm_fixed, {
   palette: ['2c5e3b', 'a9ba7d', 'dec68a', '8c684d', 'b0a9a4', 'ffffff'], 
   min: 0, 
   max: 2500}, 'srtm_fixed'); // loads the corrected map
+  
+// Thresholding images
+// Pick a threshold for the snowline 
+
+var snow_line = srtm.gt(1800) // sets the threshold for greater than 1800 m
+Map.addLayer(snow_line, {palette: ['black','e']}, 'snow threshold')
+
+
