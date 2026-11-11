@@ -46,7 +46,8 @@ Map.setCenter(146.746, -19.529, 9);
 Map.addLayer(trueColour, trueColourVis, 'True Colour Landsat');
 
 // Clouds block our view
-
+var LandsatMedian = trueColour.median()
+Map.addLayer(LandsatMedian, trueColourVis, 'True Color Median');
 
 
 
