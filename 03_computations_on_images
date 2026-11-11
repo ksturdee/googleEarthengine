@@ -82,6 +82,8 @@ var elevOutput_MinMax = srtm.reduceRegion({
 })
 print ('elevOutput_MinMax', elevOutput_MinMax)
 
+// How much area above 1500m occurs inside the national park?
+// Must make an image 
 
 
 
