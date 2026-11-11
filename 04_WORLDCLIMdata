@@ -3,8 +3,8 @@ print (dataset) // 12 images where each one is a month
 
 
 // Get two months
-var jan_climate = ee.Image ("WORLDCLIM/V1/MONTHLY/01")
-var july_climate = ee.Image ("WORLDCLIM/V1/MONTHLY/07")
+var jan_climate = ee.Image ("WORLDCLIM/V1/MONTHLY/01").multiply(0.1) // Note the pixel scaling error and fix it
+var july_climate = ee.Image ("WORLDCLIM/V1/MONTHLY/07").multiply(0.1)
 
 
 // Select their average temperature bands
@@ -22,16 +22,3 @@ var meanTemperatureVis = {
 Map.addLayer(jan_climate_avg, meanTemperatureVis, 'janClimate')
 Map.addLayer(july_climate_avg, meanTemperatureVis, 'julyClimate')
 
-// Note the pixel scaling error and fix it
-
-var dataset_fixed = dataset.multipy(0.1) 
-Map.addLayer(, {
-  palette: ['2c5e3b', 'a9ba7d', 'dec68a', '8c684d', 'b0a9a4', 'ffffff'], 
-  min: 0, 
-  max: 2500}, 'srtm_fixed'); // loads the corrected map
-  
-// Thresholding images
-// Pick a threshold for the snowline 
-
-
-// Need to divide all pixel values by 10, or multiply by .1 (.multiply(0.1)
