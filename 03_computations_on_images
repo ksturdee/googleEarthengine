@@ -22,6 +22,6 @@ Map.addLayer(srtm_fixed, {
 // Pick a threshold for the snowline 
 
 var snow_line = srtm.gt(1800) // sets the threshold for greater than 1800 m
-Map.addLayer(snow_line, {palette: ['black','e']}, 'snow threshold')
+Map.addLayer(snow_line, {palette: ['black','white']}, 'snow threshold')
 
 
