@@ -58,7 +58,15 @@ var slopeOutput2 = taranakiSlope.reduceRegion({
 })
 print ('slopeOutput2', slopeOutput2) // same answer: 10.041806454483673
 
-// Clculate the maximum and minimum elevation of the park.
+// Calculate the maximum and minimum elevation of the park. Reduce regions with a different reducer (Max)
+var elevOutput_Max = srtm.reduceRegion({
+  reducer: ee.Reducer.max(), // find max of all pixels within the national park 
+  geometry: taranaki,
+  scale: 90 // again, pixel size in m from metadata
+})
+  print('elevOutput_Max', elevOutput_Max)
+
+
 
 
 
