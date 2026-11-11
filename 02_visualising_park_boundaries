@@ -47,8 +47,8 @@ Map.addLayer(nz_pas, {color: '#5A6153'}, 'NZ PAs') // 10130 protected parks in N
 
 // How many National Parks in NZ?
 var national_parks = wdpa.filter(ee.Filter.bounds (nz))
-print('No. National Parks in NZ', nz_pas.size())
-Map.addLayer(nz_pas, {color: 'purple'}, 'NZ National Parks') 
+print('No. National Parks in NZ', national_parks.size())
+Map.addLayer(national_parks, {color: 'purple'}, 'NZ National Parks') 
 
 // // Link them all into one statement to be more efficient
 // var nz_national_parks = protected_areas
