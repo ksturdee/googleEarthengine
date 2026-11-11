@@ -50,12 +50,3 @@ var nz_pas = iucn_pa.filter(ee.Filter.bounds(nz))
 Map.addLayer(nz_pas, {color: 'purple'}, 'NZ National Parks')
 print('No. National Parks in NZ', nz_pas.size()) 
 
-// // Link them all into one statement to be more efficient
-// var nz_national_parks = protected_areas
-//     .filter(ee.Filter.eq('IUCN_CAT', 'II')) // filter only NPs
-//     .filter(ee.Filter.bounds(nz)); // filter to NZ
-
-// print ('Number of National Parks in NZ:', nz_national_parks.size())
-
-
-
