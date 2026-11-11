@@ -24,3 +24,13 @@ Map.addLayer(jan_climate_avg, meanTemperatureVis, 'janClimate')
 Map.addLayer(july_climate_avg, meanTemperatureVis, 'julyClimate')
 // We now have degrees C per pixel
 
+
+// We want to reduce to get the yearly average
+var annualMeanTemperature = dataset
+  .select('tavg')
+  .mean() // this is the reducer
+  .multiply(0.1); // scale pixels to real values
+
+Map.setCenter(71.7, 52.4, 3);
+Map.addLayer(annualMeanTemperature, meanTemperatureVis, 'Mean Annual Temperature');
+
