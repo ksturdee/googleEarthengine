@@ -1,0 +1,61 @@
+// Visualising // Setup
+
+Map.setOptions('SATELLITE')
+Map.setCenter(174.0638, -39.2891, 11)
+
+// Viz an image
+var srtm = ee.Image("CGIAR/SRTM90_V4") // obtain snippet from search bar
+print(srtm)
+Map.addLayer(srtm, {
+  palette: ['2c5e3b', 'a9ba7d', 'dec68a', '8c684d', 'b0a9a4', 'ffffff'], 
+  min: 0, 
+  max: 3000
+}, 'srtm'); // Adds earth-toned topography layer from forest green (0m) to snow white (3000m)
+// Using Inspector tab we can click on pixels to get values.
+
+// Visualize FEATURES
+var wdpa = (ee.FeatureCollection("WCMC/WDPA/current/polygons"))
+Map.addLayer(wdpa, {color: 'red'}, 'wdpa') // include layer names to stay organised
+
+// Using inspector, we can see it is called "Egmont National Park" managed by the Department of Conservation. It is a terrestrial realm with the IUCN category of 11.
+
+// Finding number of protected areas on Earth
+var no_pas = wdpa.size()
+
+print('No of protected areas:', wdpa.size())
+// Finding the first protected area
+var first_pa = wdpa.sort('STATUS_YR', false).first()
+print ('First protected area:', first_pa)
+
+// Filter only for level 2 protected areas
+var iucn_pa = wdpa.filter(ee.Filter.eq('IUCN_CAT', 'II'));
+Map.addLayer(iucn_pa, {color: 'yellow'}, 'National Parks');
+print ('No of level 2 protected areas', iucn_pa.size())
+
+// Spatial fitler
+var countries = ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017")
+print ('countries', countries)
+Map.addLayer(countries, {color: 'black'}, 'countries')
+
+var nz = countries.filter(ee.Filter.eq('country_co', 'NZ')) // filter country by code to get NZ
+Map.addLayer(nz, {color: 'white'}, 'nz')
+
+// Filter PAs to NZBoundary
+var nz_pas = wdpa.filter(ee.Filter.bounds (nz))
+print('No. pas in NZ', nz_pas.size())
+Map.addLayer(nz_pas, {color: '#5A6153'}, 'NZ PAs') // 10130 protected parks in NZ
+
+// How many National Parks in NZ?
+var national_parks = wdpa.filter(ee.Filter.bounds (nz))
+print('No. National Parks in NZ', national_parks.size())
+Map.addLayer(national_parks, {color: 'purple'}, 'NZ National Parks') 
+
+// // Link them all into one statement to be more efficient
+// var nz_national_parks = protected_areas
+//     .filter(ee.Filter.eq('IUCN_CAT', 'II')) // filter only NPs
+//     .filter(ee.Filter.bounds(nz)); // filter to NZ
+
+// print ('Number of National Parks in NZ:', nz_national_parks.size())
+
+
+
