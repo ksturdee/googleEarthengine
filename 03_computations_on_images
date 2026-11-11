@@ -64,7 +64,7 @@ var elevOutput_Max = srtm.reduceRegion({
   geometry: taranaki,
   scale: 90 // again, pixel size in m from metadata
 })
-  print('elevOutput_Max', elevOutput_Max) // Max elevation: 2484
+  print('elevOutput_Max', elevOutput_Max) //  elevation: 2484
   
 // Repeat for minimum
 var elevOutput_Min = srtm.reduceRegion({
@@ -83,7 +83,24 @@ var elevOutput_MinMax = srtm.reduceRegion({
 print ('elevOutput_MinMax', elevOutput_MinMax)
 
 // How much area above 1500m occurs inside the national park?
-// Must make an image 
+var elevGt1500 = srtm.gt(1500).selfMask();
+
+Map.addLayer(elevGt1500.clip(taranaki),
+  {palette: ['blue']},
+  'Elevation >1500m'); // 
+
+// Obtain area of >1500 m
+var areaGt1500m = elevGt1500 // binary, 1 == yes
+  .multiply (ee.Image.pixelArea()) // get the area of each pixel
+  .reduceRegion({
+  reducer: ee.Reducer.sum(), // sum all pixel areas together
+  geometry: taranaki,
+  scale:90 
+})
+print ('The area of Taranaki above 1500m (m2)', areaGt1500m) // in square metres
+print ('The area of Taranaki above 1500m (km2)', 
+ee.Number(areaGt1500m.get('elevation')).divide(1000 * 1000)) // in square metres
+
 
 
 
