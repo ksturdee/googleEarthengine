@@ -34,4 +34,31 @@ Map.addLayer(population_2000, population_vis, 'population_count_2000');
 Map.addLayer(population_2015, population_vis, 'population_count_2015');
 
 // Repeat for Nightlights
+var nl = ee.ImageCollection("NOAA/DMSP-OLS/NIGHTTIME_LIGHTS");
+print("Nighttime Lights ImageCollection:", nl);
+
+// get two images for start and end
+var nl_2000 = ee.Image ('NOAA/DMSP1-OLS/NIGHTTIME_LIGHTS/F142000')
+var nl_2013 = ee.Image ('NOAA/DMSP1-OLS/NIGHTTIME_LIGHTS/F182013')
+
+print(nl_2000);
+print(nl_2013);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
