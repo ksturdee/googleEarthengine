@@ -1,0 +1,19 @@
+
+
+// Population
+var population = ee.ImageCollection("CIESIN/GPWv411/GPW_Population_Count");
+
+print("Population ImageCollection:", population);
+
+
+// Pull out images for years we want
+// Import two images for start and end
+var population_2000 = ee.Image(
+  'CIESIN/GPWv411/GPW_Population_Count/gpw_v4_population_count_rev11_2000_30_sec');
+
+var population_2015 = ee.Image(
+  'CIESIN/GPWv411/GPW_Population_Count/gpw_v4_population_count_rev11_2015_30_sec');
+
+// Print images
+print("Population 2000:", population_2000);
+print("Population 2015:", population_2015);
