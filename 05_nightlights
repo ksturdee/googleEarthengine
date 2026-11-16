@@ -17,3 +17,21 @@ var population_2015 = ee.Image(
 // Print images
 print("Population 2000:", population_2000);
 print("Population 2015:", population_2015);
+
+var population_vis = {
+  'max': 1000.0,
+  'palette': [
+    'ffffe7',
+    '86a192',
+    '509791',
+    '307296',
+    '2c4484',
+    '000066'
+  ],
+  'min': 0.0
+};
+Map.addLayer(population_2000, population_vis, 'population_count_2000');
+Map.addLayer(population_2015, population_vis, 'population_count_2015');
+
+// Repeat for Nightlights
+
