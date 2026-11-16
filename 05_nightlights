@@ -45,12 +45,25 @@ var nl_2000 = ee.Image ('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F142000').select(['avg_v
 
 var nl_2013 = ee.Image ('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F182013').select(['avg_vis'], ['nightlight'])
 
-print(nl_2000);
-print(nl_2013);
 print('nightlight 2000 processed', nl_2000)
+print('nightlight 2013 processed', nl_2013)
 
+var nighttimeLightsVis = {
+  min: 0,
+  max: 63,
+  palette: [
+    '000000',
+    '333333',
+    '666666',
+    'ffff00',
+    'ff9900',
+    'ffffff'
+  ]
+};
 
-
+// Add layers to the map
+Map.addLayer(nl_2000, nighttimeLightsVis, 'Nighttime Lights 2000');
+Map.addLayer(nl_2013, nighttimeLightsVis, 'Nighttime Lights 2013');
 
 
 
