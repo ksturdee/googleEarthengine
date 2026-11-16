@@ -37,12 +37,17 @@ Map.addLayer(population_2015, population_vis, 'population_count_2015');
 var nl = ee.ImageCollection("NOAA/DMSP-OLS/NIGHTTIME_LIGHTS");
 print("Nighttime Lights ImageCollection:", nl);
 
-// get two images for start and end
-var nl_2000 = ee.Image ('NOAA/DMSP1-OLS/NIGHTTIME_LIGHTS/F142000')
-var nl_2013 = ee.Image ('NOAA/DMSP1-OLS/NIGHTTIME_LIGHTS/F182013')
+// get two images for start and end. 
+// These images have 4 bands  each; avg_vis, stable_lights, cf_cvg, and avg_lights_x_pct. They are objects.
+// We only want to select 1 band for this analysis. Try avg_vis
+var nl_2000 = ee.Image ('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F142000').select(['avg_vis'],
+['nightlight']) // selects image and gives it a name
+
+var nl_2013 = ee.Image ('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F182013').select(['avg_vis'], ['nightlight'])
 
 print(nl_2000);
 print(nl_2013);
+print('nightlight 2000 processed', nl_2000)
 
 
 
