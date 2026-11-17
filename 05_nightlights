@@ -49,8 +49,8 @@ print('nightlight 2000 processed', nl_2000)
 print('nightlight 2013 processed', nl_2013)
 
 var nighttimeLightsVis = {
-  min: 0,
-  max: 63,
+  min: 3,
+  max: 60,
   palette: [
     '000000',
     '333333',
@@ -65,9 +65,22 @@ var nighttimeLightsVis = {
 Map.addLayer(nl_2000, nighttimeLightsVis, 'Nighttime Lights 2000');
 Map.addLayer(nl_2013, nighttimeLightsVis, 'Nighttime Lights 2013');
 
+// Generate a hotspot map (use vector data for analysis)
 
+// First make grids to use
 
+var grid_5deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_5deg'); // 5 degree grid
+var grid_2deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_2deg'); // 2 degree grid
+var grid_1deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_1deg'); // 1 degree grid
 
+print('5 Degree Grid:', grid_5deg);
+print('2 Degree Grid:', grid_2deg);
+print('1 Degree Grid:', grid_1deg);
+
+// Add grids to map
+Map.addLayer(grid_5deg, {color: 'red'}, '5 Degree Grid', false);
+Map.addLayer(grid_2deg, {color: 'yellow'}, '2 Degree Grid', false);
+Map.addLayer(grid_1deg, {color: 'blue'}, '1 Degree Grid', true);
 
 
 
