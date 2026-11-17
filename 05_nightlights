@@ -15,21 +15,21 @@ var population_2015 = ee.Image(
   'CIESIN/GPWv411/GPW_Population_Count/gpw_v4_population_count_rev11_2015_30_sec');
 
 // Print images
-print("Population 2000:", population_2000);
-print("Population 2015:", population_2015);
+// print("Population 2000:", population_2000);
+// print("Population 2015:", population_2015);
 
-var population_vis = {
-  'max': 1000.0,
-  'palette': [
-    'ffffe7',
-    '86a192',
-    '509791',
-    '307296',
-    '2c4484',
-    '000066'
-  ],
-  'min': 0.0
-};
+// var population_vis = {
+//   'max': 1000.0,
+//   'palette': [
+//     'ffffe7',
+//     '86a192',
+//     '509791',
+//     '307296',
+//     '2c4484',
+//     '000066'
+//   ],
+//   'min': 0.0
+// };
 // Map.addLayer(population_2000, population_vis, 'population_count_2000');
 // Map.addLayer(population_2015, population_vis, 'population_count_2015');
 
@@ -45,21 +45,21 @@ var nl_2000 = ee.Image ('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F142000').select(['avg_v
 
 var nl_2013 = ee.Image ('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F182013').select(['avg_vis'], ['nightlight'])
 
-print('nightlight 2000 processed', nl_2000)
-print('nightlight 2013 processed', nl_2013)
+// print('nightlight 2000 processed', nl_2000)
+// print('nightlight 2013 processed', nl_2013)
 
-var nighttimeLightsVis = {
-  min: 3,
-  max: 60,
-  palette: [
-    '000000',
-    '333333',
-    '666666',
-    'ffff00',
-    'ff9900',
-    'ffffff'
-  ]
-};
+// var nighttimeLightsVis = {
+//   min: 3,
+//   max: 60,
+//   palette: [
+//     '000000',
+//     '333333',
+//     '666666',
+//     'ffff00',
+//     'ff9900',
+//     'ffffff'
+//   ]
+// };
 
 // Add layers to the map
 // Map.addLayer(nl_2000, nighttimeLightsVis, 'Nighttime Lights 2000');
@@ -106,8 +106,8 @@ var nl_change = nl_2013
   .subtract(nl_2000)
 Map.addLayer (nl_change, {palette:  ['red', 'black', 'lime'], min: -50, max: 50}, 'nl_change', false, 0.9)
 
-print('Population Change:', pop_change);
-print('Nighttime Light Change:', nl_change);
+// print('Population Change:', pop_change);
+// print('Nighttime Light Change:', nl_change);
 
 
 
@@ -150,7 +150,7 @@ Export.table.toAsset({
   assetId: 'pop_changePer2DEGgridV2'
 });
 
-var nl_change_per_5deg_d = ee.FeatureCollection('users/murrnick/mb5370/nl_change_per_5deg_grid'); // 5 degree grid results
-print(nl_change_per_5deg_d)
+// var nl_change_per_5deg_d = ee.FeatureCollection('users/murrnick/mb5370/nl_change_per_5deg_grid'); // 5 degree grid results
+// print(nl_change_per_5deg_d)
 
 
