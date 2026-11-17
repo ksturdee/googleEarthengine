@@ -98,14 +98,12 @@ var coastGrids = grid_2deg.filter(
 
 var pop_change = population_2015
   .subtract(population_2000)
-  .clipToCollection(coastGrids);
   Map.addLayer(
     pop_change, {palette:  ['red', 'black', 'lime'], min: -500, max: 500}, 'pop_change', false, 0.9)
     
     
 var nl_change = nl_2013
   .subtract(nl_2000)
-  .clipToCollection(coastGrids) // clip it to the coastal ecoregions/grids
 Map.addLayer (nl_change, {palette:  ['red', 'black', 'lime'], min: -50, max: 50}, 'nl_change', false, 0.9)
 
 print('Population Change:', pop_change);
@@ -139,20 +137,20 @@ var pop_changePer2DEGgrid = pop_change.reduceRegions({
 
 
 
-// // Export the result
-// Export.table.toAsset({
-//   collection: nl_changePer2DEGgrid,
-//   description: 'export_pop_toAsset',
-//   assetId: 'nl_changePer2DEGgrid'
-// });
+// Export the result
+Export.table.toAsset({
+  collection: nl_changePer2DEGgrid,
+  description: 'export_pop_toAsset',
+  assetId: 'nl_changePer2DEGgridV2'
+});
 
-// Export.table.toAsset({
-//   collection: pop_changePer2DEGgrid,
-//   description: 'export_nl_toAsset',
-//   assetId: 'pop_changePer2DEGgrid'
-// });
+Export.table.toAsset({
+  collection: pop_changePer2DEGgrid,
+  description: 'export_nl_toAsset',
+  assetId: 'pop_changePer2DEGgridV2'
+});
 
-var nl_change_per_5deg_grid = ee.FeatureCollection('users/murrnick/mb5370/nl_change_per_5deg_grid'); // 5 degree grid results
-print(nl_change_per_5deg_grid)
+var nl_change_per_5deg_d = ee.FeatureCollection('users/murrnick/mb5370/nl_change_per_5deg_grid'); // 5 degree grid results
+print(nl_change_per_5deg_d)
 
 
