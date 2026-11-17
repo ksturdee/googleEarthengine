@@ -1,4 +1,5 @@
-
+// Set options
+snazzy.addStyle("https://snazzymaps.com/style/72543/assassins-creed-iv", "Assasin's Creed IV")
 
 // Population
 var population = ee.ImageCollection("CIESIN/GPWv411/GPW_Population_Count");
@@ -89,7 +90,7 @@ var coastGrids = grid_2deg.filter(
 //   coastGrids,
 //   {color: 'red'},
 //   'Coastal Grid Cells',
-//   true
+//   false, 0.4
 // );
 
 // Comment out uneeded layers for global analysis
