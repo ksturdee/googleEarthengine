@@ -121,9 +121,9 @@ var nl_changePer2DEGgrid = nl_change.reduceRegions({
   scale: 1000, // for speed computing-wise
 });
 // Print first grid cell to inspect results
-print(
-  'First coastal grid with mean nightlight change:',
-  nl_changePer2DEGgrid.first());
+// print(
+//   'First coastal grid with mean nightlight change:',
+//   nl_changePer2DEGgrid.first());
 
 var pop_changePer2DEGgrid = pop_change.reduceRegions({
   collection: coastGrids,
@@ -131,9 +131,9 @@ var pop_changePer2DEGgrid = pop_change.reduceRegions({
   scale: 1000
 });
 
-print(
-  'First grid with mean population change:',
-  pop_changePer2DEGgrid.first());
+// print(
+//   'First grid with mean population change:',
+//   pop_changePer2DEGgrid.first());
 
 // Export the result
 Export.table.toAsset({
