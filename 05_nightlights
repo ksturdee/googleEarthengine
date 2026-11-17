@@ -30,8 +30,8 @@ var population_vis = {
   ],
   'min': 0.0
 };
-Map.addLayer(population_2000, population_vis, 'population_count_2000');
-Map.addLayer(population_2015, population_vis, 'population_count_2015');
+// Map.addLayer(population_2000, population_vis, 'population_count_2000');
+// Map.addLayer(population_2015, population_vis, 'population_count_2015');
 
 // Repeat for Nightlights
 var nl = ee.ImageCollection("NOAA/DMSP-OLS/NIGHTTIME_LIGHTS");
@@ -62,37 +62,74 @@ var nighttimeLightsVis = {
 };
 
 // Add layers to the map
-Map.addLayer(nl_2000, nighttimeLightsVis, 'Nighttime Lights 2000');
-Map.addLayer(nl_2013, nighttimeLightsVis, 'Nighttime Lights 2013');
+// Map.addLayer(nl_2000, nighttimeLightsVis, 'Nighttime Lights 2000');
+// Map.addLayer(nl_2013, nighttimeLightsVis, 'Nighttime Lights 2013');
 
 // Generate a hotspot map (use vector data for analysis)
 
 // First make grids to use
 
-var grid_1deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_1deg'); // 1 degree grid
+var grid_2deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_2deg'); // 2 degree grid
 
-print('1 Degree Grid:', grid_1deg);
-
-Map.addLayer(grid_1deg, {color: 'blue'}, '1 Degree Grid'); // Add layer to map
+// Map.addLayer(grid_2deg, {color: 'blue'}, '2 Degree Grid'); // Add layer to map
 
 // Import a coastline
 var coast =
 ee.FeatureCollection('projects/UQ_intertidal/dataMasks/naturalEarthCoastline_v1');
-Map.addLayer(coast, {color: 'yellow'}, 'coast') // coastline data
+// Map.addLayer(coast, {color: 'yellow'}, 'coast') // coastline data
 
 // Must filter the grid feature collection dataset to the global coastline
 
-var coastGrids = 
+var coastGrids = grid_2deg.filter(
+  ee.Filter.bounds(coast.geometry())
+);
 
+// // Display coastal grid cells
+// Map.addLayer(
+//   coastGrids,
+//   {color: 'red'},
+//   'Coastal Grid Cells',
+//   true
+// );
 
+// Comment out uneeded layers for global analysis
+// How much populations and nightlight have changed over a time period?
+// Can subtract historical pixel values from recent ones = change
 
+var pop_change = population_2015
+  .subtract(population_2000)
+  .clipToCollection(coastGrids);
+  Map.addLayer(
+    pop_change, {palette:  ['red', 'black', 'lime'], min: -500, max: 500}, 'pop_change', true, 0.9)
+    
+    
+var nl_change = nl_2013
+  .subtract(nl_2000)
+  .clipToCollection(coastGrids) // clip it to the coastal ecoregions/grids
+Map.addLayer (nl_change, {palette:  ['red', 'black', 'lime'], min: -50, max: 50}, 'nl_change', true, 0.9)
 
+print('Population Change:', pop_change);
+print('Nighttime Light Change:', nl_change);
 
+// Compute average change using reduceRegions with a mean reducer = mean change in nightlights per grid
+var nl_changePer2DEGgrid = nl_change.reduceRegions({
+  collection: coastGrids,
+  reducer: ee.Reducer.mean(),
+  scale: 1000, // for speed computing-wise
+});
+// Print first grid cell to inspect results
+print(
+  'First coastal grid with mean nightlight change:',
+  nl_changePer2DEGgrid.first());
 
+var pop_changePer2DEGgrid = pop_change.reduceRegions({
+  collection: coastGrids,
+  reducer: ee.Reducer.mean(),
+  scale: 1000
+});
 
-
-
-
-
+print(
+  'Mean population change:',
+  pop_changePer2DEGgrid.first());
 
 
