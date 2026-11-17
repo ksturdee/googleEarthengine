@@ -11,3 +11,5 @@
 // Submarine canyons (deeper than 200m, slopes of >6 degrees)
 
 // with adding at least one vector dataset
+
+ETOPO1 = ee.Image("NOAA/NGDC/ETOPO1")
