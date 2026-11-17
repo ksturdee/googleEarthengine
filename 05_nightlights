@@ -139,17 +139,20 @@ var pop_changePer2DEGgrid = pop_change.reduceRegions({
 
 
 
-// Export the result
-Export.table.toAsset({
-  collection: nl_changePer2DEGgrid,
-  description: 'export_pop_toAsset',
-  assetId: 'nl_changePer2DEGgrid'
-});
+// // Export the result
+// Export.table.toAsset({
+//   collection: nl_changePer2DEGgrid,
+//   description: 'export_pop_toAsset',
+//   assetId: 'nl_changePer2DEGgrid'
+// });
 
-Export.table.toAsset({
-  collection: pop_changePer2DEGgrid,
-  description: 'export_nl_toAsset',
-  assetId: 'pop_changePer2DEGgrid'
-});
+// Export.table.toAsset({
+//   collection: pop_changePer2DEGgrid,
+//   description: 'export_nl_toAsset',
+//   assetId: 'pop_changePer2DEGgrid'
+// });
+
+var nl_change_per_5deg_grid = ee.FeatureCollection('users/murrnick/mb5370/nl_change_per_5deg_grid'); // 5 degree grid results
+print(nl_change_per_5deg_grid)
 
 
