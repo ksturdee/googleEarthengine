@@ -1,0 +1,13 @@
+// Task: build a map of the world's major deep ocean ecosystems
+
+// ETOPO1 dataset will be used, specifically the bedrock band. This dataset is a 1 
+// arc-minute global relief model of Earth''s surface that integrates land topography 
+// and ocean bathymetry. Bedrock band: min: -10898 m	max: 8271	resolution: 1855 meters	m
+
+// The goal is to map 
+// Hadal trenches and troughs (>6000m)
+// Abyssal plains (3000-6000m)
+// Continental and island slopes (250-3000m)
+// Submarine canyons (deeper than 200m, slopes of >6 degrees)
+
+// with adding at least one vector dataset
