@@ -120,6 +120,7 @@ var nl_changePer2DEGgrid = nl_change.reduceRegions({
   reducer: ee.Reducer.mean(),
   scale: 1000, // for speed computing-wise
 });
+
 // Print first grid cell to inspect results
 // print(
 //   'First coastal grid with mean nightlight change:',
@@ -134,6 +135,9 @@ var pop_changePer2DEGgrid = pop_change.reduceRegions({
 // print(
 //   'First grid with mean population change:',
 //   pop_changePer2DEGgrid.first());
+
+
+
 
 // Export the result
 Export.table.toAsset({
