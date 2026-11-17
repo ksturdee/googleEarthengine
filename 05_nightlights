@@ -137,20 +137,22 @@ var pop_changePer2DEGgrid = pop_change.reduceRegions({
 
 
 
-// Export the result
-Export.table.toAsset({
-  collection: nl_changePer2DEGgrid,
-  description: 'export_pop_toAsset',
-  assetId: 'nl_changePer2DEGgridV2'
-});
+// // Export the result
+// Export.table.toAsset({
+//   collection: nl_changePer2DEGgrid,
+//   description: 'export_pop_toAsset',
+//   assetId: 'nl_changePer2DEGgridV2'
+// });
 
-Export.table.toAsset({
-  collection: pop_changePer2DEGgrid,
-  description: 'export_nl_toAsset',
-  assetId: 'pop_changePer2DEGgridV2'
-});
+// Export.table.toAsset({
+//   collection: pop_changePer2DEGgrid,
+//   description: 'export_nl_toAsset',
+//   assetId: 'pop_changePer2DEGgridV2'
+// });
 
-// var nl_change_per_5deg_d = ee.FeatureCollection('users/murrnick/mb5370/nl_change_per_5deg_grid'); // 5 degree grid results
-// print(nl_change_per_5deg_d)
+// Note: exported many times and left overnight but kept failing. Will use murrnick's data instead as a substitue
+
+var nl_change_per_5deg_d = ee.FeatureCollection('users/murrnick/mb5370/nl_change_per_5deg_grid'); // 5 degree grid results
+print(nl_change_per_5deg_d)
 
 
