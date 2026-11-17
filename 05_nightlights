@@ -1,5 +1,4 @@
-// Set options
-snazzy.addStyle("https://snazzymaps.com/style/72543/assassins-creed-iv", "Assasin's Creed IV")
+
 
 // Population
 var population = ee.ImageCollection("CIESIN/GPWv411/GPW_Population_Count");
@@ -70,7 +69,7 @@ var nighttimeLightsVis = {
 
 // First make grids to use
 
-var grid_2deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_2deg'); // 2 degree grid
+var grid_2deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_2deg'); // 2 degree grid 
 
 // Map.addLayer(grid_2deg, {color: 'blue'}, '2 Degree Grid'); // Add layer to map
 
@@ -100,14 +99,14 @@ var coastGrids = grid_2deg.filter(
 var pop_change = population_2015
   .subtract(population_2000)
   .clipToCollection(coastGrids);
-  // Map.addLayer(
-  //   pop_change, {palette:  ['red', 'black', 'lime'], min: -500, max: 500}, 'pop_change', true, 0.9)
+  Map.addLayer(
+    pop_change, {palette:  ['red', 'black', 'lime'], min: -500, max: 500}, 'pop_change', false, 0.9)
     
     
 var nl_change = nl_2013
   .subtract(nl_2000)
   .clipToCollection(coastGrids) // clip it to the coastal ecoregions/grids
-// Map.addLayer (nl_change, {palette:  ['red', 'black', 'lime'], min: -50, max: 50}, 'nl_change', true, 0.9)
+Map.addLayer (nl_change, {palette:  ['red', 'black', 'lime'], min: -50, max: 50}, 'nl_change', false, 0.9)
 
 print('Population Change:', pop_change);
 print('Nighttime Light Change:', nl_change);
