@@ -99,14 +99,14 @@ var coastGrids = grid_2deg.filter(
 var pop_change = population_2015
   .subtract(population_2000)
   .clipToCollection(coastGrids);
-  Map.addLayer(
-    pop_change, {palette:  ['red', 'black', 'lime'], min: -500, max: 500}, 'pop_change', true, 0.9)
+  // Map.addLayer(
+  //   pop_change, {palette:  ['red', 'black', 'lime'], min: -500, max: 500}, 'pop_change', true, 0.9)
     
     
 var nl_change = nl_2013
   .subtract(nl_2000)
   .clipToCollection(coastGrids) // clip it to the coastal ecoregions/grids
-Map.addLayer (nl_change, {palette:  ['red', 'black', 'lime'], min: -50, max: 50}, 'nl_change', true, 0.9)
+// Map.addLayer (nl_change, {palette:  ['red', 'black', 'lime'], min: -50, max: 50}, 'nl_change', true, 0.9)
 
 print('Population Change:', pop_change);
 print('Nighttime Light Change:', nl_change);
@@ -115,7 +115,7 @@ print('Nighttime Light Change:', nl_change);
 var nl_changePer2DEGgrid = nl_change.reduceRegions({
   collection: coastGrids,
   reducer: ee.Reducer.mean(),
-  scale: 1000, // for speed computing-wise
+  scale: 5000, // for speed computing-wise
 });
 // Print first grid cell to inspect results
 print(
@@ -125,11 +125,11 @@ print(
 var pop_changePer2DEGgrid = pop_change.reduceRegions({
   collection: coastGrids,
   reducer: ee.Reducer.mean(),
-  scale: 1000
+  scale: 5000
 });
 
 print(
-  'Mean population change:',
+  'First grid with mean population change:',
   pop_changePer2DEGgrid.first());
 
 
