@@ -80,7 +80,9 @@ var coast =
 ee.FeatureCollection('projects/UQ_intertidal/dataMasks/naturalEarthCoastline_v1');
 Map.addLayer(coast, {color: 'yellow'}, 'coast') // coastline data
 
+// Must filter the grid feature collection dataset to the global coastline
 
+var coastGrids = 
 
 
 
