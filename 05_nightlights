@@ -69,18 +69,19 @@ Map.addLayer(nl_2013, nighttimeLightsVis, 'Nighttime Lights 2013');
 
 // First make grids to use
 
-var grid_5deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_5deg'); // 5 degree grid
-var grid_2deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_2deg'); // 2 degree grid
 var grid_1deg = ee.FeatureCollection('users/murrnick/mb5370/worldgrid_1deg'); // 1 degree grid
 
-print('5 Degree Grid:', grid_5deg);
-print('2 Degree Grid:', grid_2deg);
 print('1 Degree Grid:', grid_1deg);
 
-// Add grids to map
-Map.addLayer(grid_5deg, {color: 'red'}, '5 Degree Grid', false);
-Map.addLayer(grid_2deg, {color: 'yellow'}, '2 Degree Grid', false);
-Map.addLayer(grid_1deg, {color: 'blue'}, '1 Degree Grid', true);
+Map.addLayer(grid_1deg, {color: 'blue'}, '1 Degree Grid'); // Add layer to map
+
+// Import a coastline
+var coast =
+ee.FeatureCollection('projects/UQ_intertidal/dataMasks/naturalEarthCoastline_v1');
+Map.addLayer(coast, {color: 'yellow'}, 'coast') // coastline data
+
+
+
 
 
 
