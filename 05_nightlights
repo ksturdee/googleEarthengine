@@ -118,7 +118,7 @@ print('Nighttime Light Change:', nl_change);
 var nl_changePer2DEGgrid = nl_change.reduceRegions({
   collection: coastGrids,
   reducer: ee.Reducer.mean(),
-  scale: 5000, // for speed computing-wise
+  scale: 1000, // for speed computing-wise
 });
 // Print first grid cell to inspect results
 print(
@@ -128,11 +128,24 @@ print(
 var pop_changePer2DEGgrid = pop_change.reduceRegions({
   collection: coastGrids,
   reducer: ee.Reducer.mean(),
-  scale: 5000
+  scale: 1000
 });
 
 print(
   'First grid with mean population change:',
   pop_changePer2DEGgrid.first());
+
+// Export the result
+Export.table.toAsset({
+  collection: nl_changePer2DEGgrid,
+  description: 'export_pop_toAsset',
+  assetId: 'nl_changePer2DEGgrid'
+});
+
+Export.table.toAsset({
+  collection: pop_changePer2DEGgrid,
+  description: 'export_nl_toAsset',
+  assetId: 'pop_changePer2DEGgrid'
+});
 
 
