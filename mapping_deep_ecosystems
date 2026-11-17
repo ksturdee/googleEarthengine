@@ -11,11 +11,11 @@
 // Submarine canyons (deeper than 200m, slopes of >6 degrees)
 
 // with adding at least one vector dataset
-
+// Load and inspect ETOPO1
 var ETOPO1 = ee.Image("NOAA/NGDC/ETOPO1")
 print(ETOPO1);
 
 
-// Import bedrock band
-var bedrock = ee.Image('NOAA/NGDC/ETOPO1/bedrock');
+// Select bedrock band
+var bedrock = ee.Image('NOAA/NGDC/ETOPO1').select('bedrock');
 print(bedrock)
