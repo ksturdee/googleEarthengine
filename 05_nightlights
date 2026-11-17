@@ -111,6 +111,9 @@ Map.addLayer (nl_change, {palette:  ['red', 'black', 'lime'], min: -50, max: 50}
 print('Population Change:', pop_change);
 print('Nighttime Light Change:', nl_change);
 
+
+
+
 // Compute average change using reduceRegions with a mean reducer = mean change in nightlights per grid
 var nl_changePer2DEGgrid = nl_change.reduceRegions({
   collection: coastGrids,
