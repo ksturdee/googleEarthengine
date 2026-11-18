@@ -88,6 +88,26 @@ Map.addLayer(benthic, {}, 'Benthic Habitat', false);
 var coraloralgae = benthic.eq(15).selfMask(); // make image where each pixel is coral or algae
 print(coraloralgae);
 
-Map.addLayer(coraloralgae, {palette: ['ff6161']}, 'Coral and Algae')
+Map.addLayer(coraloralgae, {palette: ['ff6161']}, 'Coral and Algae', false) // shows only coral and algae
+
+// Buffer features to clip coral raster to a distance surrounding each station.
+
+// var bufferedHeron = ee.Feature(field_stations.first())
+// print(bufferedHeron);
+
+// To buffer all of the field stations, must use .map() for a loop
+
+var bufferer = function (feature) {
+  var buffered = feature.buffer(800) // 800 m
+  return buffered;
+}
+var bufferedStations = field_stations.map(bufferer) // use .map to work one station at a time
+print(bufferedStations);
+
+Map.addLayer(bufferedStations, {color: 'yellow'}, 'Buffered Stations', true); // generates a buffer of 800m radius)
+
+// Use this to calculate area of coral close to to all of the stations
+
+
 
 
