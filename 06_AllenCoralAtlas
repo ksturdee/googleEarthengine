@@ -17,6 +17,7 @@ var distance = 800 // (m) we are allowed to snorkel from the research stationm p
 // Research station locations 
 // Make a geometry (vector) of locations; create point features given coordinates
 
+
 // Vector operations - anything you need to do to your research stations
 
 
