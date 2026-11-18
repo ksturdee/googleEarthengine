@@ -46,9 +46,21 @@ print(ocean); // this just makes a binary image between land and ocean, must mak
 
 // View ocean bathymetry without covering land
 var oceanBathymetry = bedrock.updateMask(ocean); // update mask retains original depth vales
-Map.addLayer(oceanBathymetry, {min: -10898, max: 0, palette: bathymetryPalette}, 'Ocean Bathymetry');
+Map.addLayer(oceanBathymetry, {min: -10898, max: 0, palette: bathymetryPalette}, 'Ocean Bathymetry', false);
 
 // build raster map of each ecosystem
+// define hadal trenches >6000m
+var hadal = bedrock.lt(-6000).selfMask();
+print('Hadal trenches and troughs', hadal);
+Map.addLayer(hadal, {palette: ['#54278F']}, 'Hadal trenches');
+
+// define abyssal plains, 3000-6000m
+var abyssal = bedrock.gt(-6000)
+  .and(bedrock.lt(-3000))
+  .selfMask();
+  
+print('Abyssal plains', abyssal);
+Map.addLayer(abyssal, {palette: ['#08519C']}, 'Abyssal plains');
 
 
 
