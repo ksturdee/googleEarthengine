@@ -15,7 +15,28 @@
 var ETOPO1 = ee.Image("NOAA/NGDC/ETOPO1")
 print(ETOPO1);
 
-
 // Select bedrock band
 var bedrock = ee.Image('NOAA/NGDC/ETOPO1').select('bedrock');
 print(bedrock)
+
+// Create a bathymetric palette (deepest ocean to shallow coastal waters)
+var bathymetryPalette = [
+  '#081d58', // -6000m (Deep abyssal blue)
+  '#253494', // -5000m (Deep ocean blue)
+  '#225ea8', // -4000m (Mid-depth blue)
+  '#1d91c0', // -3000m (Continental slope blue)
+  '#41b6c4', // -2000m (Shelf turquoise)
+  '#7fcdbb', // -1000m (Shallow water teal)
+  '#558b2f'  // 0m to +1000m+ (Land green - swap for '#b0b0b0' for neutral grey)
+];
+
+// Add the bedrock object to the map
+Map.addLayer(
+  bedrock, 
+  {
+    min: -10898, // Deepest value in meters (adjust to your region)
+    max: 8271,     // Sea level
+    palette: bathymetryPalette
+  }, 
+  'Bedrock Bathymetry'
+);
