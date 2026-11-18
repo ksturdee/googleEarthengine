@@ -41,7 +41,12 @@ Map.addLayer(bedrock, {
 
 // This applies bathymetry everywhere, limit analysis to the ocean...
 var ocean = bedrock.lt(0);
-print(ocean); // this just makes a binary image between land and ocean
+print(ocean); // this just makes a binary image between land and ocean, must make ocean mask
+
+// View ocean bathymetry without covering land
+var oceanBathymetry = bedrock.updateMask(ocean);
+print(oceanBathymetry);
+Map.addLayer(oceanBathymetry, {min: -10898, max: 0, palette: bathymetryPalette}, 'Ocean Bathymetry');
 
 
 
