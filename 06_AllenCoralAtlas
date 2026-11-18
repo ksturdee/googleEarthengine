@@ -1,6 +1,8 @@
 
 
-
+// The purpose of this analysis is to determine which research station we should
+// spend a limited buget on by finding the best balance between maximizing the
+// amount of coral accessible from shore.
 
 
 Map.setOptions('SATELLITE')
