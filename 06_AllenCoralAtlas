@@ -2,19 +2,15 @@
 
 // The purpose of this analysis is to determine which research station we should
 // spend a limited buget on by finding the best balance between maximizing the
-// amount of coral accessible from shore.
+// amount of coral accessible from shore. In this scenario, we are allowed to
+// snorkel 800 m from shore. 
 
-
+// Set map options to start
 Map.setOptions('SATELLITE')
 Map.setCenter( 151.914, -23.441, 9) // zoom
 
-
-
-
-
 // Global variables - data imports and any constants
-var distance = 800 // (m) we are allowed to snorkel from the research stationm project constraint
-
+var distance = 800 // (m) allowed snorkelling distance from shore
 
 // Research station locations 
 // Make a geometry (vector) of locations; create point features given coordinates
