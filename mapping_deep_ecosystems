@@ -12,6 +12,9 @@
 
 // ...with adding at least one vector dataset
 
+
+Map.setOptions('HYBRID');
+
 // Load and inspect ETOPO1
 var ETOPO1 = ee.Image("NOAA/NGDC/ETOPO1")
 print(ETOPO1);
@@ -79,6 +82,38 @@ var submarine = bedrock.lt(-200)
   .selfMask();
 print('Submarine canyons', submarine)
 Map.addLayer(submarine, {palette: ['#D95F0E']}, 'Submarine canyons');
+
+// Import deep-sea mining exploration areas from dataset 
+// Dataset: International Seabed Authority (ISA);  
+// Source: https://www.isa.org.jm/deepdata-database/maps/
+
+// This vector dataset contains polygon boundaries of areas
+// allocated for polymetallic nodule exploration, which occurs on
+// the seafloor especially in abyssal environments. For this dataset,
+// the polygons represent exploration contract areas,
+// not necessarily locations where commercial seabed mining is actively occurring;
+// however it is still a useful proxy to investigate where deep sea exploration
+// is occuring. 
+
+// Import ISA exploration polygons from my Earth Engine assets
+var miningAreas = ee.FeatureCollection(
+  'projects/coastlines-512607/assets/ISA_PolymetallicNodule_ExplorationAreas'
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
