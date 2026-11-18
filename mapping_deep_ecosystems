@@ -99,13 +99,23 @@ Map.addLayer(submarine, {palette: ['#D95F0E']}, 'Submarine canyons');
 var miningAreas = ee.FeatureCollection(
   'projects/coastlines-512607/assets/ISA_PolymetallicNodule_ExplorationAreas'
 );
+print ('ISA polymetallic nodule exploration areas', miningAreas); // Feature collection
+
+// Display exploration boundaries
+Map.addLayer(miningAreas.style({
+  color: '#F2C66D',      // Gold polygon boundaries
+  fillColor: '#F2C66D15', // Very transparent gold fill
+  width: 2               // Boundary width in pixels
+  }), {},'ISA polymetallic nodule exploration areas');
 
 
+// Add marine protected areas (Dataset: World Database on Protected Areas (WDPA))
+// This dataset contains protected area boundaries from around the world, 
+// and uses 0 = terrestrial, 1 = coastal (marine and terrestrial), and 
+// 2 = entirely marine.
 
-
-
-
-
+var WDPA = ee.FeatureCollection("WCMC/WDPA/current/polygons")
+print(WDPA);
 
 
 
