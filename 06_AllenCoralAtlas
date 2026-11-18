@@ -86,5 +86,22 @@ Map.addLayer(benthic, {}, 'Benthic Habitat');
 
 // Make binary image where 1 = coral/algae and 0 = everything else
 // Coral/algae is class = 15 in the data
+var CoralAndAlgae = 
+
+
+
+// Obtain area of >1500 m
+var areaGt1500m = elevGt1500 // binary, 1 == yes
+  .multiply (ee.Image.pixelArea()) // get the area of each pixel
+  .reduceRegion({
+  reducer: ee.Reducer.sum(), // sum all pixel areas together
+  geometry: taranaki,
+  scale:90 
+})
+print ('The area of Taranaki above 1500m (m2)', areaGt1500m) // in square metres
+print ('The area of Taranaki above 1500m (km2)', 
+ee.Number(areaGt1500m.get('elevation')).divide(1000 * 1000)) // in square metres
+// The area of Taranaki above 1500m (km2): 11.474443340820313
+
 
 
