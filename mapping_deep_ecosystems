@@ -33,23 +33,15 @@ var bathymetryPalette = [
 ];
 
 // Add the bedrock object to the map
-Map.addLayer(
-  bedrock, 
-  {
+Map.addLayer(bedrock, {
     min: -10898, // Deepest value in meters (adjust to your region)
     max: 8271,     // Sea level
-    palette: bathymetryPalette
-  }, 
-  'ETOPO1 Bedrock Bathymetry'
-);
+    palette: bathymetryPalette}, 
+  'ETOPO1 Bedrock Bathymetry', false);
 
-
-
-
-// Build a raster map of hadal trenches and troughs >6000m
-
-var hadalTrenches = bedrock
-
+// This applies bathymetry everywhere, limit analysis to the ocean...
+var ocean = bedrock.lt(0);
+print(ocean); // this just makes a binary image between land and ocean
 
 
 
