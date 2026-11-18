@@ -104,9 +104,18 @@ var bufferer = function (feature) {
 var bufferedStations = field_stations.map(bufferer) // use .map to work one station at a time
 print(bufferedStations);
 
-Map.addLayer(bufferedStations, {color: 'yellow'}, 'Buffered Stations', true); // generates a buffer of 800m radius)
+Map.addLayer(bufferedStations, {color: 'yellow'}, 'Buffered Stations', false); // generates a buffer of 800m radius)
 
 // Use this to calculate area of coral close to to all of the stations
+var coral_area = coraloralgae // binary 1 == coral
+  .multiply (ee.Image.pixelArea()) // get area of each pixel
+  .reduceRegions({
+    reducer: ee.Reducer.sum(), // sum pixel areas
+    collection: bufferedStations,
+    scale: 5
+  })
+
+print('Coral/algae area (m2) at each station:', coral_area);
 
 
 
