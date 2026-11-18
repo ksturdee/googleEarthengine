@@ -116,6 +116,8 @@ var coral_area = coraloralgae // binary 1 == coral
   })
 
 print('Coral/algae area (m2) at each station:', coral_area);
-Map.addLayer(coral_area, {}, 'coral_area')
+Map.addLayer(coral_area, {}, 'coral_area', false)
 
-
+// Use .sort() to find those with the highest and lowest area... 
+var highestCoral = coral_area.sort('sum', false);
+print('Highest to lowest coral/algae area', highestCoral)
