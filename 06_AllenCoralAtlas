@@ -126,23 +126,23 @@ print('Stations with the highest to lowest coral area:', highestCoral.aggregate_
 
 // Seems like OneTreeIsland might be the most suitable for this project, sum: 186407.08759596583 m2
 
-// Prepare results and export:
-Export.table.toDrive({
-  collection: coral_area, //FYI - type: featureCollection
-  description: 'exportToDrive',
-  fileNamePrefix: 'research_stations',
-  fileFormat:'CSV'
-})
+// // Prepare results and export:
+// Export.table.toDrive({
+//   collection: coral_area, //FYI - type: featureCollection
+//   description: 'exportToDrive',
+//   fileNamePrefix: 'research_stations',
+//   fileFormat:'CSV'
+// })
 
 
-var exportImage = ACA.clip(geometry)
-Map.addLayer(exportImage)
+// var exportImage = ACA.clip(geometry)
+// Map.addLayer(exportImage)
 
-Export.image.toDrive({
-  image: exportImage, //FYI - type: Image
-  description: 'exportImageToDrive',
-  fileNamePrefix: 'aca_orpheus',
-  fileFormat:'GeoTIFF',
-  scale:5
-})
+// Export.image.toDrive({
+//   image: exportImage, //FYI - type: Image
+//   description: 'exportImageToDrive',
+//   fileNamePrefix: 'aca_orpheus',
+//   fileFormat:'GeoTIFF',
+//   scale:5
+// })
 
