@@ -20,15 +20,16 @@ print(ETOPO1);
 var bedrock = ee.Image('NOAA/NGDC/ETOPO1').select('bedrock');
 print(bedrock)
 
-// Create a bathymetric palette (deepest ocean to shallow coastal waters)
+// Bathymetric palette: deepest ocean to shallow coastal waters
 var bathymetryPalette = [
-  '#081d58', // -6000m (Deep abyssal blue)
-  '#253494', // -5000m (Deep ocean blue)
-  '#225ea8', // -4000m (Mid-depth blue)
-  '#1d91c0', // -3000m (Continental slope blue)
-  '#41b6c4', // -2000m (Shelf turquoise)
-  '#7fcdbb', // -1000m (Shallow water teal)
-  '#558b2f'  // 0m to +1000m+ (Land green - swap for '#b0b0b0' for neutral grey)
+  '#080C3B', // -10,898 m: Deepest hadal trenches
+  '#172A68', //  -9,000 m: Hadal zone
+  '#253494', //  -7,000 m: Deep trenches
+  '#225EA8', //  -5,000 m: Abyssal plains
+  '#1D91C0', //  -3,000 m: Continental slope
+  '#41B6C4', //  -2,000 m: Continental slope
+  '#7FCDBB', //  -1,000 m: Upper slope
+  '#C7E9B4'  //       0 m: Shallow coastal waters
 ];
 
 // Add the bedrock object to the map
@@ -39,5 +40,14 @@ Map.addLayer(
     max: 8271,     // Sea level
     palette: bathymetryPalette
   }, 
-  'Bedrock Bathymetry'
+  'ETOPO1 Bedrock Bathymetry'
 );
+
+// Build a raster map of hadal trenches and troughs >6000m
+
+var hadalTrenches = bedrock
+
+
+
+
+
