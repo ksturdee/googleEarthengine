@@ -8,7 +8,7 @@
 
 
 // Global variables - data imports and any constants
-var distance = 800 // (m) we are allowed to snorkel from the research station
+var distance = 800 // (m) we are allowed to snorkel from the research stationm project constraint
 
 // Research station locations - 
 
