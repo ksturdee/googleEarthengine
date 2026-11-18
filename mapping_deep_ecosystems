@@ -74,11 +74,11 @@ print('seabed slope', slope);
 // inspect on a map
 Map.addLayer(slope, {min: 0, max: 30, palette: ['#FEF001', '#FFCE03', '#FD9A01', '#FD6104']}, 'Seabed slope', false);
 
-// var submarine = oceanBathymetry.gt(-200)
-//   .and(slope.lt(6))
-//   .selfMask();
-// print('Submarine canyons', submarine)
-// Map.addLayer(submarine, {palette: ['red']}, 'Submarine canyons');
+var submarine = bedrock.lt(-200)
+  .and(slope.gt(6))
+  .selfMask();
+print('Submarine canyons', submarine)
+Map.addLayer(submarine, {palette: ['#D95F0E']}, 'Submarine canyons');
 
 
 
