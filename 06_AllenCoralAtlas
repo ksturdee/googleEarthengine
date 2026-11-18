@@ -30,9 +30,21 @@ var Heron = /* color: #00ffff */ee.Feature(
           "system:index": "0"
         }),
     OneTree = /* color: #009999 */ee.Feature(
-        ee.Geometry.MultiPoint(),
+        ee.Geometry.Point([152.09161112774862, -23.50675158598116]),
         {
           "station": "OneTreeIsland",
+          "system:index": "0"
+        }),
+    Moorea = /* color: #ff00ff */ee.Feature(
+        ee.Geometry.Point([-149.82625441512042, -17.490427677417653]),
+        {
+          "station": "RichardGumpResearchStation",
+          "system:index": "0"
+        }),
+    Smithsonian = /* color: #ff9999 */ee.Feature(
+        ee.Geometry.Point([-82.25562131016746, 9.35170955197125]),
+        {
+          "station": "SmithsonianStationBocosdelToro",
           "system:index": "0"
         });
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
@@ -41,27 +53,38 @@ var Heron = /* color: #00ffff */ee.Feature(
 // The purpose of this analysis is to determine which research station we should
 // spend a limited buget on by finding the best balance between maximizing the
 // amount of coral accessible from shore. In this scenario, we are allowed to
-// snorkel 800 m from shore. 
+// snorkel 800 m from shore. This script uses the Allan Coral Atlans benthc cover
+// map. 
 
 // Set map options to start
 Map.setOptions('SATELLITE')
 Map.setCenter( 151.914, -23.441, 15) // zoom over Heron Island
 
+ 
 // Global variables - data imports and any constants
 var distance = 800 // (m) allowed snorkelling distance from shore
 
 // Research station locations 
-// Mark their locations on the map using coordinates
-
-
+// Mark their locations on the map using coordinates. Then make a featureCollection
 
 // Make a geometry (vector) of locations; create point features given coordinates
-
-
-// Vector operations - anything you need to do to your research stations
-
+var field_stations = ee.FeatureCollection([Heron, Hamilton, Daydream, Lizard, Orpheus, OneTree, Moorea, Smithsonian])
+print(field_stations);
 
 // ACA operations - ACA set
+// Import Allen Coral Atlas data. Note this dataset has 5m pixel resolution. Underlyng images data are
+// temporal composites from 2018-2020. We are interested in the benthic band.
+var ACA = ee.Image("ACA/reef_habitat/v2_0")
+print(ACA);
+
+Map.addLayer(ACA, {}, 'ACA', false);
+
+var benthic = ee.Image("ACA/reef_habitat/v2_0").select('benthic')
+print(benthic);
+
+Map.addLayer(benthic, {}, 'Benthic Habitat');
+
+// Make binary image where 1 = coral/algae and 0 = everything else
+// Coral/algae is class = 15 in the data
 
 
-// Exports / results
