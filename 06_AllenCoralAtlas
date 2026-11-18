@@ -1,3 +1,35 @@
+/**** Start of imports. If edited, may not auto-convert in the playground. ****/
+var Heron = /* color: #00ffff */ee.Feature(
+        ee.Geometry.Point([151.91524454498293, -23.44250203085016]),
+        {
+          "station": "HeronIsland",
+          "system:index": "0"
+        }),
+    Hamilton = /* color: #bf04c2 */ee.Feature(
+        ee.Geometry.Point([148.95950468075858, -20.352386478210672]),
+        {
+          "station": "HamiltonIsland",
+          "system:index": "0"
+        }),
+    Daydream = /* color: #00ff00 */ee.Feature(
+        ee.Geometry.Point([148.81436110328545, -20.254851934466274]),
+        {
+          "station": "DaydreamIsland",
+          "system:index": "0"
+        }),
+    Lizard = /* color: #0000ff */ee.Feature(
+        ee.Geometry.Point([145.44841086787747, -14.67398071720268]),
+        {
+          "station": "LizardIsland",
+          "system:index": "0"
+        }),
+    Orpheus = /* color: #999900 */ee.Feature(
+        ee.Geometry.Point([146.49022804220212, -18.613233066083183]),
+        {
+          "station": "OrpheusIsland",
+          "system:index": "0"
+        });
+/***** End of imports. If edited, may not auto-convert in the playground. *****/
 
 
 // The purpose of this analysis is to determine which research station we should
@@ -7,12 +39,16 @@
 
 // Set map options to start
 Map.setOptions('SATELLITE')
-Map.setCenter( 151.914, -23.441, 9) // zoom
+Map.setCenter( 151.914, -23.441, 15) // zoom over Heron Island
 
 // Global variables - data imports and any constants
 var distance = 800 // (m) allowed snorkelling distance from shore
 
 // Research station locations 
+// Mark their locations on the map using coordinates
+
+
+
 // Make a geometry (vector) of locations; create point features given coordinates
 
 
