@@ -118,6 +118,10 @@ var coral_area = coraloralgae // binary 1 == coral
 print('Coral/algae area (m2) at each station:', coral_area);
 Map.addLayer(coral_area, {}, 'coral_area', false)
 
-// Use .sort() to find those with the highest and lowest area... 
+// Sort stations from highest to lowest coral/algae area
 var highestCoral = coral_area.sort('sum', false);
-print('Highest to lowest coral/algae area', highestCoral)
+
+// Print station names and corresponding coral areas
+print('Stations with the highest to lowest coral area:', highestCoral.aggregate_array('station'));
+
+// Seems like OneTreeIsland might be the most suitable for this project, sum: 186407.08759596583 m2
