@@ -28,6 +28,12 @@ var Heron = /* color: #00ffff */ee.Feature(
         {
           "station": "OrpheusIsland",
           "system:index": "0"
+        }),
+    OneTree = /* color: #009999 */ee.Feature(
+        ee.Geometry.MultiPoint(),
+        {
+          "station": "OneTreeIsland",
+          "system:index": "0"
         });
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 
