@@ -68,6 +68,14 @@ var contSlopes = bedrock.gt(-3000)
 print('Continental and island slopes', contSlopes)
 Map.addLayer(contSlopes, {palette: ['#2766A8']}, 'Continental and island slopes');
 
+// repeat for submarine canyons (deeper than 200 with slopes of >6 degrees)
+var slope = ee.Terrain.slope(bedrock);
+print('seabed slope', slope);
+// inspect on a map
+Map.addLayer(slope, {min: 0, max: 30, palette: ['#FEF001', '#FFCE03', '#FD9A01', '#FD6104']}, 'Seabed slope', false);
+
+// var submarine = bedrock.gt(-200)
+//   .and(bedrock
 
 
 
