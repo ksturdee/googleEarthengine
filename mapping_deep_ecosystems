@@ -12,7 +12,6 @@
 
 // ...with adding at least one vector dataset
 
-
 // Load and inspect ETOPO1
 var ETOPO1 = ee.Image("NOAA/NGDC/ETOPO1")
 print(ETOPO1);
