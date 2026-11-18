@@ -48,6 +48,8 @@ var oceanBathymetry = bedrock.updateMask(ocean);
 print(oceanBathymetry);
 Map.addLayer(oceanBathymetry, {min: -10898, max: 0, palette: bathymetryPalette}, 'Ocean Bathymetry');
 
+// 
+
 
 
 
