@@ -85,7 +85,7 @@ print(benthic);
 Map.addLayer(benthic, {}, 'Benthic Habitat', false);
 
 // Make binary image where 1 = coral/algae and 0 = everything else
-var coraloralgae = benthic.gt(15).selfMask(); // make image where each pixel is coral or algae
+var coraloralgae = benthic.eq(15).selfMask(); // make image where each pixel is coral or algae
 print(coraloralgae);
 
 Map.addLayer(coraloralgae, {palette: ['ff6161']}, 'Coral and Algae')
