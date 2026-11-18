@@ -43,6 +43,9 @@ Map.addLayer(
   'ETOPO1 Bedrock Bathymetry'
 );
 
+
+
+
 // Build a raster map of hadal trenches and troughs >6000m
 
 var hadalTrenches = bedrock
