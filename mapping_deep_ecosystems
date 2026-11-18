@@ -13,7 +13,13 @@
 // ...with adding at least one vector dataset
 
 
-Map.setOptions('HYBRID');
+// Clean basemap with country borders but no labels
+var snazzy = require('users/aazuspan/snazzy:styles');
+
+snazzy.addStyle(
+  'https://snazzymaps.com/style/6489/super-simple',
+  'Clean Ocean Map'
+);
 
 // Load and inspect ETOPO1
 var ETOPO1 = ee.Image("NOAA/NGDC/ETOPO1")
@@ -25,14 +31,14 @@ print(bedrock)
 
 // Bathymetric palette: deepest ocean to shallow coastal waters
 var bathymetryPalette = [
-  '#080C3B', // -10,898 m: Deepest hadal trenches
-  '#172A68', //  -9,000 m: Hadal zone
-  '#253494', //  -7,000 m: Deep trenches
-  '#225EA8', //  -5,000 m: Abyssal plains
-  '#1D91C0', //  -3,000 m: Continental slope
-  '#41B6C4', //  -2,000 m: Continental slope
-  '#7FCDBB', //  -1,000 m: Upper slope
-  '#C7E9B4'  //       0 m: Shallow coastal waters
+  '#10182F', // -10,898 m: Deepest hadal trenches
+  '#1B2947', //  -9,000 m: Hadal zone
+  '#293D60', //  -7,000 m: Deep trenches
+  '#385575', //  -5,000 m: Abyssal plains
+  '#52738D', //  -3,000 m: Continental slope
+  '#7296A6', //  -2,000 m: Continental slope
+  '#9CBDBD', //  -1,000 m: Upper slope
+  '#D4E3D8'  //       0 m: Shallow coastal waters
 ];
 
 // Add the bedrock object to the map
@@ -55,33 +61,33 @@ Map.addLayer(oceanBathymetry, {min: -10898, max: 0, palette: bathymetryPalette},
 // define hadal trenches >6000m
 var hadal = bedrock.lt(-6000).selfMask();
 print('Hadal trenches and troughs', hadal);
-Map.addLayer(hadal, {palette: ['#08142C']}, 'Hadal trenches');
+Map.addLayer(hadal, {palette: ['#17233F']}, 'Hadal trenches');
 
 // define abyssal plains, 3000-6000m
 var abyssal = bedrock.gt(-6000)
   .and(bedrock.lt(-3000))
   .selfMask();
 print('Abyssal plains', abyssal);
-Map.addLayer(abyssal, {palette: ['#0F3460']}, 'Abyssal plains');
+Map.addLayer(abyssal, {palette: ['#365B80']}, 'Abyssal plains');
 
 // define continental and island slopes 250-3000m
 var contSlopes = bedrock.gt(-3000)
   .and(bedrock.lt(-250))
   .selfMask();
 print('Continental and island slopes', contSlopes)
-Map.addLayer(contSlopes, {palette: ['#2766A8']}, 'Continental and island slopes');
+Map.addLayer(contSlopes, {palette: ['#79A9B0']}, 'Continental and island slopes');
 
 // repeat for submarine canyons (deeper than 200 with slopes of >6 degrees)
 var slope = ee.Terrain.slope(bedrock);
 print('seabed slope', slope);
 // inspect on a map
-Map.addLayer(slope, {min: 0, max: 30, palette: ['#FEF001', '#FFCE03', '#FD9A01', '#FD6104']}, 'Seabed slope', false);
+Map.addLayer(slope, {min: 0, max: 30, palette: ['#DCE9E4', '#A9C9C6', '#6F9FA9', '#3E657D']}, 'Seabed slope', false);
 
 var submarine = bedrock.lt(-200)
   .and(slope.gt(6))
   .selfMask();
 print('Submarine canyons', submarine)
-Map.addLayer(submarine, {palette: ['#D95F0E']}, 'Submarine canyons');
+Map.addLayer(submarine, {palette: ['#D68C78']}, 'Submarine canyons');
 
 // Import deep-sea mining exploration areas from dataset 
 // Dataset: International Seabed Authority (ISA);  
@@ -107,32 +113,6 @@ Map.addLayer(miningAreas.style({
   fillColor: '#F2C66D15', // Very transparent gold fill
   width: 2               // Boundary width in pixels
   }), {},'ISA polymetallic nodule exploration areas');
-
-
-// Add marine protected areas (Dataset: World Database on Protected Areas (WDPA))
-// This dataset contains protected area boundaries from around the world, 
-// and uses 0 = terrestrial, 1 = coastal (marine and terrestrial), and 
-// 2 = entirely marine.
-
-var WDPA = ee.FeatureCollection("WCMC/WDPA/current/polygons")
-print(WDPA);
-
-// Filter to entirely marine protected areas
-var marineProtectedAreas = WDPA
-  .filter(ee.Filter.inList('MARINE and COASTAL', ['1', '2']));
-
-// Inspect the filtered dataset
-print('First marine protected area', marineProtectedAreas.first());
-
-// Display marine protected area boundaries in turquoise
-// Keep this layer switched off initially to avoid clutter
-Map.addLayer(marineProtectedAreas.style({color: '#58D6C7', fillColor: '#58D6C710',
-    width: 1}), {}, 'Marine protected areas', true);
-
-
-
-
-
 
 
 
