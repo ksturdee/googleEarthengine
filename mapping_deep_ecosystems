@@ -52,15 +52,21 @@ Map.addLayer(oceanBathymetry, {min: -10898, max: 0, palette: bathymetryPalette},
 // define hadal trenches >6000m
 var hadal = bedrock.lt(-6000).selfMask();
 print('Hadal trenches and troughs', hadal);
-Map.addLayer(hadal, {palette: ['#54278F']}, 'Hadal trenches');
+Map.addLayer(hadal, {palette: ['#08142C']}, 'Hadal trenches');
 
 // define abyssal plains, 3000-6000m
 var abyssal = bedrock.gt(-6000)
   .and(bedrock.lt(-3000))
   .selfMask();
-  
 print('Abyssal plains', abyssal);
-Map.addLayer(abyssal, {palette: ['#08519C']}, 'Abyssal plains');
+Map.addLayer(abyssal, {palette: ['#0F3460']}, 'Abyssal plains');
+
+// define continental and island slopes 250-3000m
+var contSlopes = bedrock.gt(-3000)
+  .and(bedrock.lt(-250))
+  .selfMask();
+print('Continental and island slopes', contSlopes)
+Map.addLayer(contSlopes, {palette: ['#2766A8']}, 'Continental and island slopes');
 
 
 
