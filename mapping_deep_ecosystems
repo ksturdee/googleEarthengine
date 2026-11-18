@@ -117,7 +117,17 @@ Map.addLayer(miningAreas.style({
 var WDPA = ee.FeatureCollection("WCMC/WDPA/current/polygons")
 print(WDPA);
 
+// Filter to entirely marine protected areas
+var marineProtectedAreas = WDPA
+  .filter(ee.Filter.inList('MARINE and COASTAL', ['1', '2']));
 
+// Inspect the filtered dataset
+print('First marine protected area', marineProtectedAreas.first());
+
+// Display marine protected area boundaries in turquoise
+// Keep this layer switched off initially to avoid clutter
+Map.addLayer(marineProtectedAreas.style({color: '#58D6C7', fillColor: '#58D6C710',
+    width: 1}), {}, 'Marine protected areas', true);
 
 
 
