@@ -116,7 +116,6 @@ var coral_area = coraloralgae // binary 1 == coral
   })
 
 print('Coral/algae area (m2) at each station:', coral_area);
-
-
+Map.addLayer(coral_area, {}, 'coral_area')
 
 
