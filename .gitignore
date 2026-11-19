@@ -1,17 +1,37 @@
-.Rproj.user
+# ==========================================
+# RStudio
+# ==========================================
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
-
-
 .Renviron
 .Rprofile
 *.Rcheck/
-*.Rproj.user/
+
+# ==========================================
+# Temporary files
+# ==========================================
 *.swp
 *.tmp
 *~
 
-*.DS_Store
-*Thumbs.db
-*desktop.ini
+# ==========================================
+# Operating system files
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Earth Engine credentials
+# ==========================================
+.earthengine/
+credentials
+*.json.key
+service-account*.json
+
+# ==========================================
+# Logs and temporary outputs
+# ==========================================
+*.log
