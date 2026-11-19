@@ -1,4 +1,6 @@
-// Comments can be recorded using two slashe
+// 01 - Introduction to Google Earth Engine JavaScript
+
+// Comments can be recorded using two slashes
 print('Hello World')
 
 // Variables are used to store objects, and are defined using the keyword var.

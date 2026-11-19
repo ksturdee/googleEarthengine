@@ -49,6 +49,7 @@ var Heron = /* color: #00ffff */ee.Feature(
         });
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 
+// 06 - Coral Habitat Accessibility at Research Stations
 
 // The purpose of this analysis is to determine which research station we should
 // spend a limited buget on by finding the best balance between maximizing the

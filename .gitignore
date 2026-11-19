@@ -1,0 +1,17 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+
+.Renviron
+.Rprofile
+*.Rcheck/
+*.Rproj.user/
+*.swp
+*.tmp
+*~
+
+*.DS_Store
+*Thumbs.db
+*desktop.ini

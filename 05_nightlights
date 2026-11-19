@@ -1,4 +1,4 @@
-
+// 05 - Population, Nightlights and Coastal Change
 
 // Population
 var population = ee.ImageCollection("CIESIN/GPWv411/GPW_Population_Count");

@@ -1,3 +1,6 @@
+// 04 - ImageCollections and Temporal Reducers
+
+// Import WorldClim climate data
 var dataset = ee.ImageCollection('WORLDCLIM/V1/MONTHLY');
 print (dataset) // 12 images where each one is a month
 // Degrees are in C
